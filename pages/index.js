@@ -1,10 +1,13 @@
 import Head from 'next/head';
 import { useAuth } from '@/lib/auth';
+
 import { Button, Heading, Text, Code, Icon, Flex } from '@chakra-ui/core';
+
 
 const Home = () => {
   const auth = useAuth();
   return (
+
     <Flex
       as="main"
       direction="column"
@@ -27,6 +30,7 @@ const Home = () => {
         </Button>
       )}
     </Flex>
+
   );
 };
 
