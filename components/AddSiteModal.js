@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
-
 import {
   Modal,
   ModalOverlay,
@@ -11,18 +10,18 @@ import {
   ModalCloseButton,
   FormControl,
   FormLabel,
+  Button,
   Input,
-  useDisclosure,
-  Button
+  useDisclosure
 } from '@chakra-ui/core';
+
 import { createSite } from '@/lib/db';
 
 const AddSiteModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   const initialRef = useRef();
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { handleSubmit, register } = useForm();
+
   const onCreateSite = (values) => {
     createSite(values);
     onClose();
@@ -30,10 +29,9 @@ const AddSiteModal = () => {
 
   return (
     <>
-      <Button onClick={onOpen} fontWeight="medium" maxW="200px">
+      <Button fontWeight="medium" maxW="200px" onClick={onOpen}>
         Add Your First Site
       </Button>
-
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onCreateSite)}>
@@ -44,7 +42,7 @@ const AddSiteModal = () => {
               <FormLabel>Name</FormLabel>
               <Input
                 ref={initialRef}
-                placeholder="My Site"
+                placeholder="My site"
                 name="site"
                 ref={register({
                   required: 'Required'
@@ -65,7 +63,7 @@ const AddSiteModal = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={onClose} mr={3}>
+            <Button onClick={onClose} mr={3} fontWeight="medium">
               Cancel
             </Button>
             <Button
