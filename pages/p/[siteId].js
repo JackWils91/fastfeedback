@@ -27,11 +27,10 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const { sites } = await getAllSites();
-  console.log('sites-->', sites);
   const paths = sites.map((site) => ({
     params: { siteId: site.id.toString() }
   }));
-  console.log('paths-->', paths);
+
   return {
     paths,
     fallback: false
