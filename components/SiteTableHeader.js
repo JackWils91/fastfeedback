@@ -9,7 +9,7 @@ import {
 
 import AddSiteModal from './AddSiteModal';
 
-const SiteTableHeader = () => (
+const SiteTableHeader = ({ isPaidAccount }) => (
   <>
     <Breadcrumb>
       <BreadcrumbItem>
@@ -18,7 +18,7 @@ const SiteTableHeader = () => (
     </Breadcrumb>
     <Flex justifyContent="space-between">
       <Heading mb={8}>My Sites</Heading>
-      <AddSiteModal>+ Add Site</AddSiteModal>
+      {isPaidAccount && <AddSiteModal>+ Add Site</AddSiteModal>}
     </Flex>
   </>
 );
