@@ -31,7 +31,7 @@ const Home = ({ allFeedback }) => {
               dangerouslySetInnerHTML={{
                 __html: `
               if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
-                window.location.href = "/dashboard"
+                window.location.href = "/sites"
               }
             `
               }}
@@ -56,7 +56,7 @@ const Home = ({ allFeedback }) => {
           {auth.user ? (
             <Button
               as="a"
-              href="/dashboard"
+              href="/sites"
               backgroundColor="gray.900"
               color="white"
               fontWeight="medium"

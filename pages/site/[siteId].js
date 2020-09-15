@@ -6,6 +6,7 @@ import Feedback from '@/components/Feedback';
 import { useAuth } from '@/lib/auth';
 import { createFeedback } from '@/lib/db';
 import { getAllFeedback, getAllSites } from '@/lib/db-admin';
+import DashboardShell from '@/components/DashboardShell';
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
@@ -58,34 +59,36 @@ const FeedbackPage = ({ initialFeedback }) => {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      width="full"
-      maxWidth="700px"
-      margin="0 auto"
-    >
-      {auth.user && (
-        <Box as="form" onSubmit={onSubmit}>
-          <FormControl my={8}>
-            <FormLabel htmlFor="comment">Comment</FormLabel>
-            <Input ref={inputEl} id="comment" placeholder="Leave a comment" />
-            <Button
-              mt={4}
-              type="submit"
-              fontWeight="medium"
-              isDisabled={router.isFallback}
-            >
-              Add Comment
-            </Button>
-          </FormControl>
-        </Box>
-      )}
-      {allFeedback &&
-        allFeedback.map((feedback) => (
-          <Feedback key={feedback.id} {...feedback} />
-        ))}
-    </Box>
+    <DashboardShell>
+      <Box
+        display="flex"
+        flexDirection="column"
+        width="full"
+        maxWidth="700px"
+        margin="0 auto"
+      >
+        {auth.user && (
+          <Box as="form" onSubmit={onSubmit}>
+            <FormControl my={8}>
+              <FormLabel htmlFor="comment">Comment</FormLabel>
+              <Input ref={inputEl} id="comment" placeholder="Leave a comment" />
+              <Button
+                mt={4}
+                type="submit"
+                fontWeight="medium"
+                isDisabled={router.isFallback}
+              >
+                Add Comment
+              </Button>
+            </FormControl>
+          </Box>
+        )}
+        {allFeedback &&
+          allFeedback.map((feedback) => (
+            <Feedback key={feedback.id} {...feedback} />
+          ))}
+      </Box>
+    </DashboardShell>
   );
 };
 

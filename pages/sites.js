@@ -13,6 +13,7 @@ import Page from '@/components/Page';
 const Dashboard = () => {
   const { user } = useAuth();
   const { data } = useSWR(user ? ['/api/sites', user.token] : null, fetcher);
+
   const isPaidAccount = user?.stripeRole;
 
   if (!data) {
@@ -42,7 +43,7 @@ const Dashboard = () => {
 };
 
 const DashboardPage = () => (
-  <Page name="Dashboard" path="/dashboard">
+  <Page name="Dashboard" path="/sites">
     <Dashboard />
   </Page>
 );
